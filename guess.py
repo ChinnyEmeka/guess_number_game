@@ -47,19 +47,23 @@ class GuessingGame:
 
     def play_game(self):
         ''' This is the main method of the Guessing Game class. '''
-        i = 0;
+        
         for i in range(1, self.rounds + 1): #this means we play for x times (where x is self.rounds)
                                             #we have self.rounds + 1 because range(min, max) only goes up to max - 1, and we want it to go to max. 
            if (i == self.rounds):
               print ("Please note that this is your last round! Let's make it count!")
-           print ("Number of rounds left: {val}".format(val = self.rounds))
+           else :
+              print ("Number of rounds left: {val}".format(val = self.rounds + 1 - i))
+
            self.single_round();
-          
-        
+           print "Your score is {score}  out of {total}\n".format(score = self.score, total = i); #i represents the number of rounds currently played. 
+         
 
     def single_round(self):
+        '''This method is responsible for coordinating a single round of the game.'''
         self.trueNum = randint(1, self.limit);
         numberGuessed = False;
+        currentGuesses = []; #this array stores the guesses that the player has made. It is initially empty
         originalNumTries = self.triesLeft; #this is the original amount of tries you get to guess a number. 
         while (self.triesLeft > 0):
               guess = self.get_input(1, self.limit)
@@ -74,6 +78,12 @@ class GuessingGame:
                     self.triesLeft = self.triesLeft - 1; #we reduce the number of tries left because the player didn't guess correctly
 
                     if self.triesLeft > 0: #this if statement ensures that hints are only given to people who still have some tries left. 
+
+                        if guess in currentGuesses:
+                            print "Friend, you've guessed this number before, and it isn't correct"
+                        else:
+                            currentGuesses.append(guess); #add the user's guess to a list.
+                                                          #this allows to tell them if they've guessed a number more than once. 
                         self.display_hint(guess) #displays a hint based on the user's guess.
                     
                     #we display a message based on how many tries are left for the player.
