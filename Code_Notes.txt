@@ -7,12 +7,12 @@ System Requirements
 Working Features
 -The player can guess a number
 -The player gets corrected if he/she enters non numeric input. The program doesn't crash in this case.
--The player gets hints if the number he/she enters is too high or too low.
-
+-The player gets hints if the number he/she enters is too high or too low, or if an incorrect number has been reentered.
+-The game now displays the current score of the player. 
 
 Observations and Notes
 1) The game is played from the console. It should be modified so that people can play with a GUI, as this is more attractive. 
 2) The game doesn't let users choose difficulty or guessing range. 
-3) The game doesn't display the current score of the player. 
+
 
   
