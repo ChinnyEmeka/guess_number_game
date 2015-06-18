@@ -1,5 +1,5 @@
-#Version 1.0
-#This is a guessing game. You play it from the command line.
+#Version 1.1 of guessing game (played from the command line)
+#This version of the game allows users to guess numbers from 1 to 1,000, as opposed to 1 to 100. 
 
 from random import randint;
 
@@ -26,8 +26,8 @@ def get_input(minAllowed = float("-inf"), maxAllowed = float("inf")):
 def play_game():
     """This is the main method for the game."""
 
-    true_val = randint(1, 100)
-    guess = get_input(1, 100)
+    true_val = randint(1, 1000)
+    guess = get_input(1, 1000)
     if (guess == true_val):
         print "Your guess was correct! Congratulations! You win!"
     elif (guess != true_val):
